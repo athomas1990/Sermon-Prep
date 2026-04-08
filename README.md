@@ -19,7 +19,7 @@ I'm sharing them because pastors deserve better than generic AI prompts. These a
 | Skill | What it does | How often |
 |---|---|---|
 | **Sermon Prep** | | |
-| `/sermon-research` | Deep research on a passage: commentaries, historical context, word studies, thinking prompts | Weekly |
+| `/sermon-research` | Deep research on a passage: commentaries, historical context, word studies, thinking prompts. Outputs a formatted PDF. | Weekly |
 | `/sermon-brainstorm` | Interactive brainstorm session that produces a clear sermon brief | Weekly |
 | `/sermon-series` | Plan a multi-week series with titles, passages, and big ideas | Monthly |
 | **Written Communication** | | |
@@ -90,6 +90,18 @@ The first time you use any skill, the foundation will ask for a few details abou
 - **Preferred Bible translation** (defaults to NIV)
 
 You set this once. Every skill uses these details to personalize your output so it sounds like it came from someone on your staff, not a robot.
+
+---
+
+## Dependencies
+
+Most skills have zero dependencies. The following skills require a one-time install:
+
+| Skill | Dependency | Install |
+|---|---|---|
+| `/sermon-research` | reportlab (Python) | `pip install reportlab` |
+
+Claude Code will install this automatically the first time you use the skill. If you prefer to install manually, run the command above.
 
 ---
 

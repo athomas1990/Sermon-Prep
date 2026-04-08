@@ -67,8 +67,7 @@ For each word, I will provide:
 | Column | What It Shows |
 |---|---|
 | English word | As it appears in the text |
-| Original language | Hebrew or Greek |
-| Transliteration | Phonetic spelling |
+| Transliteration | Phonetic spelling of the Hebrew or Greek |
 | Literal meaning | Root definition |
 | Range of meaning | How the word is used elsewhere in Scripture |
 | Translation comparison | How NIV, ESV, KJV, NLT, and NASB handle it differently |
@@ -145,9 +144,85 @@ The questions will be tailored to your specific passage, not pulled from a gener
 
 ## Output Format
 
-Each section uses H2 headers so you can jump to the section you need. Word studies are formatted as tables. Cross-references are formatted as bullet lists. All other sections use short paragraphs. Nothing is buried in a wall of text.
+This skill outputs a formatted PDF document, not terminal text. The PDF includes styled headers, formatted tables for word studies, structured lists for cross-references, and clean typography designed for reading and markup on screen or in print.
 
-The goal is a research document you can read in 20-30 minutes and mark up as you build your outline. You are not reading a journal article. You are arming yourself for Sunday.
+### Requirements
+
+The PDF generator requires Python and the `reportlab` library. If reportlab is not installed, install it before generating:
+
+```
+pip install reportlab
+```
+
+### How It Works
+
+After completing all seven research steps, do the following:
+
+1. **Write a JSON file** containing the structured research data. Save it as a temporary file (e.g., `sermon-research-temp.json`) in the current working directory.
+2. **Locate `generate-pdf.py`** in the same directory as this skill file. Search skill directories if needed.
+3. **Run the script:** `python generate-pdf.py sermon-research-temp.json`
+4. **Delete the temporary JSON file** after the PDF generates successfully.
+5. **Tell the pastor** the PDF filename and where it was saved.
+
+The PDF saves to the current working directory with a filename based on the passage (e.g., `Sermon-Research-Romans-8-1-11.pdf`).
+
+### JSON Data Structure
+
+Structure the research into this exact format before generating the PDF. Every field maps to a section in the document.
+
+```json
+{
+  "passage": "Romans 8:1-11",
+  "date": "2026-04-08",
+  "pastor_name": "PASTOR_NAME from foundation",
+  "church_name": "CHURCH_NAME from foundation",
+  "passage_context": "Full text of the Passage Context section. Use double line breaks to separate paragraphs.",
+  "historical_background": "Full text of the Historical and Cultural Background section. Use double line breaks to separate paragraphs.",
+  "word_studies": [
+    {
+      "english": "condemnation",
+      "transliteration": "katakrima",
+      "literal_meaning": "adverse sentence, punishment following a guilty verdict",
+      "range_of_meaning": "Used 3 times in the NT, all in Romans. Refers to the sentence itself, not the act of judging.",
+      "translations": {
+        "NIV": "condemnation",
+        "ESV": "condemnation",
+        "KJV": "condemnation",
+        "NLT": "condemnation",
+        "NASB": "condemnation"
+      }
+    }
+  ],
+  "commentary_insights": "Full text of the Commentary Insights section. Use double line breaks to separate paragraphs.",
+  "cross_references": [
+    {
+      "reference": "Galatians 5:16-25",
+      "connection": "Paul's parallel treatment of life in the Spirit versus life in the flesh.",
+      "type": "Thematic connection"
+    }
+  ],
+  "theological_themes": [
+    {
+      "name": "Freedom from condemnation",
+      "in_text": "Opens the passage with the declaration that there is now no condemnation for those in Christ Jesus.",
+      "implication": "For a congregation carrying guilt from past failures, this is not abstract theology. It is the ground they stand on."
+    }
+  ],
+  "thinking_prompts": [
+    "What assumption might your congregation bring to this text that the original audience would not have had?",
+    "Where is the natural application of this passage too easy?"
+  ]
+}
+```
+
+**Important notes on the JSON:**
+- `passage_context`, `historical_background`, and `commentary_insights` are plain text strings. Separate paragraphs with double newlines (`\n\n`).
+- `word_studies` is an array of objects. Include 3-5 entries matching the words identified in Step 3.
+- `cross_references` uses three type values: "Direct parallel", "Thematic connection", or "OT background".
+- `theological_themes` is an array of 3-5 theme objects.
+- `thinking_prompts` is an array of 5-7 question strings.
+- Use the pastor's real name and church name from the foundation variables, not placeholders.
+- Do not use em dashes anywhere in the content. Use commas, colons, or periods instead.
 
 ---
 
