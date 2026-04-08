@@ -109,8 +109,8 @@ You set this once. Every skill uses these details to personalize your output so 
 
 **Thomas Costello** is the founder and CEO of [REACHRIGHT](https://reachrightstudios.com) and Executive Pastor at New Hope Hawaii Kai. He's been in ministry for 20+ years, planted a church, led a church through a merger, grew a church from 30 to 150, and built a marketing agency that serves churches across the country.
 
-- [LinkedIn](https://www.linkedin.com/in/thomascostello/)
-- [Twitter/X](https://x.com/taborink)
+- [LinkedIn](https://www.linkedin.com/in/tkcostello/)
+- [Twitter/X](https://x.com/tkcostello)
 - [REACHRIGHT](https://reachrightstudios.com)
 
 ---
