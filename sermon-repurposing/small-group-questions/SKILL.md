@@ -152,3 +152,39 @@ Before delivering the guide, verify:
 - The optional challenge is a concrete action step, not a vague encouragement
 - No em dashes anywhere in the document
 - Total question count is 10 or fewer
+
+---
+
+## PDF Output
+
+The final output is a formatted, REACHRIGHT-branded PDF, not terminal text. Requires `reportlab` (`pip install reportlab`).
+
+### Process
+
+1. Generate the discussion guide using the steps above.
+2. Assemble the structured data into the JSON schema below.
+3. Write a temporary JSON file matching the schema.
+4. Run `generate-pdf.py` with the JSON file to produce the PDF.
+5. Return the PDF path to the pastor.
+
+### JSON Schema
+
+```json
+{
+  "passage": "Romans 8:1-11",
+  "date": "April 13, 2026",
+  "translation": "ESV",
+  "pastor_name": "PASTOR_NAME from foundation",
+  "church_name": "CHURCH_NAME from foundation",
+  "big_idea": "One sentence distilled from the sermon.",
+  "icebreakers": ["Option A", "Option B"],
+  "observation_questions": ["Q1", "Q2"],
+  "interpretation_questions": ["Q3", "Q4", "Q5"],
+  "application_questions": ["Q6", "Q7", "Q8"],
+  "going_deeper_questions": ["Q9", "Q10"],
+  "prayer_prompt": "Specific prayer direction.",
+  "optional_challenge": "One concrete action step."
+}
+```
+
+**Notes:** `icebreakers` always has exactly 2 entries. Question counts follow the guide structure: 2 observation + 3 interpretation + 3 application + 2 going deeper = 10 total. `pastor_name` and `church_name` come from the pastor-foundation skill. No em dashes anywhere in the content.
