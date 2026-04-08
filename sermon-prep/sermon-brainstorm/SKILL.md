@@ -160,3 +160,45 @@ The brief organizes what the conversation surfaces. It is yours before I write i
 ---
 
 **Why this works:** Asking questions one at a time forces clarity that a form cannot produce. When a pastor has to speak an answer out loud (or type it), they discover what they actually think, which is almost always better material than what they would have written if asked to fill in a template.
+
+---
+
+## PDF Output
+
+This skill is interactive. The brainstorm conversation comes first. The PDF is generated only after the conversation produces a clear brief.
+
+The final output is a formatted, REACHRIGHT-branded PDF, not terminal text. Requires `reportlab` (`pip install reportlab`).
+
+### Process
+
+1. Run the brainstorm conversation using the question sequence above.
+2. When the brief is ready, assemble the structured data from the conversation.
+3. Write a temporary JSON file matching the schema below.
+4. Run `generate-pdf.py` with the JSON file to produce the PDF.
+5. Return the PDF path to the pastor.
+
+### JSON Schema
+
+```json
+{
+  "passage": "John 11:1-44",
+  "series": "Life and Death",
+  "date": "2026-04-13",
+  "pastor_name": "PASTOR_NAME from foundation",
+  "church_name": "CHURCH_NAME from foundation",
+  "big_idea": "Jesus delays not because he is indifferent, but because he is after something bigger than comfort.",
+  "key_tension": "The God who could have prevented suffering chose not to, and that choice was love.",
+  "audience_need": "People in the room are carrying grief and wondering where God is in it.",
+  "desired_response": "Trust that God is present in the delay, not absent from it.",
+  "the_turn": "The moment shifts from Mary and Martha questioning Jesus to Jesus weeping with them.",
+  "supporting_passages": [
+    {
+      "reference": "Psalm 13:1-2",
+      "note": "The cry of how long, a parallel to Martha and Mary."
+    }
+  ],
+  "illustration_idea": "A surgeon who makes you wait because timing matters more than speed."
+}
+```
+
+**Notes:** `series` is optional. `supporting_passages` should contain 2-3 objects. `pastor_name` and `church_name` come from the pastor-foundation skill.
