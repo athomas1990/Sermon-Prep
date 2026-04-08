@@ -132,3 +132,74 @@ Paste your request in plain language:
 > "Something on prayer. I'm not sure how long. Suggest a length. We want to use it as a fall launch series."
 
 I'll take it from there and return the full plan: scope assessment, three title options, weekly breakdown table, series arc, and practical notes.
+
+---
+
+## Output Format
+
+This skill outputs a formatted PDF document, not terminal text. The PDF includes a branded title banner, formatted tables for title options and weekly breakdown, structured sections for scope assessment, series arc, and practical notes, and clean typography designed for reading and markup on screen or in print.
+
+### Requirements
+
+The PDF generator requires Python and the `reportlab` library. If reportlab is not installed, install it before generating:
+
+```
+pip install reportlab
+```
+
+### How It Works
+
+After completing all five planning steps, do the following:
+
+1. **Write a JSON file** containing the structured series plan data. Save it as a temporary file (e.g., `sermon-series-temp.json`) in the current working directory.
+2. **Locate `generate-pdf.py`** in the same directory as this skill file. Search skill directories if needed.
+3. **Run the script:** `python generate-pdf.py sermon-series-temp.json`
+4. **Delete the temporary JSON file** after the PDF generates successfully.
+5. **Tell the pastor** the PDF filename and where it was saved.
+
+The PDF saves to the current working directory with a filename based on the series title (e.g., `Sermon-Series-Hold-Fast.pdf`).
+
+### JSON Data Structure
+
+Structure the series plan into this exact format before generating the PDF. Every field maps to a section in the document.
+
+```json
+{
+  "series_title": "Hold Fast",
+  "series_tagline": "Staying grounded when everything shifts",
+  "passage_or_theme": "Hebrews 10-12",
+  "num_weeks": 4,
+  "date": "2026-04-08",
+  "pastor_name": "PASTOR_NAME from foundation",
+  "church_name": "CHURCH_NAME from foundation",
+  "scope_assessment": "Full text of the scope assessment paragraph.",
+  "title_options": [
+    {
+      "title": "Hold Fast",
+      "tagline": "Staying grounded when everything shifts"
+    }
+  ],
+  "weekly_breakdown": [
+    {
+      "week": 1,
+      "sermon_title": "The Confidence You Already Have",
+      "passage": "Hebrews 10:19-25",
+      "big_idea": "You have access to God that nothing can revoke.",
+      "connective_thread": "Establishes the premise: we hold fast because of what Christ already did."
+    }
+  ],
+  "series_arc": "Full text of the series arc summary.",
+  "practical_notes": {
+    "duration_check": "Full text of the duration check.",
+    "special_attention": "Full text of the special attention notes.",
+    "launch_recommendation": "Full text of the launch recommendation."
+  }
+}
+```
+
+**Important notes on the JSON:**
+- `title_options` is an array of exactly 3 objects, each with a `title` and `tagline` string.
+- `weekly_breakdown` is an array with one object per week, matching the number of weeks in the series.
+- `practical_notes` is an object with three string fields: `duration_check`, `special_attention`, and `launch_recommendation`.
+- Use the pastor's real name and church name from the foundation variables, not placeholders.
+- Do not use em dashes anywhere in the content. Use commas, colons, or periods instead.
