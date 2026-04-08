@@ -168,7 +168,7 @@ Everything is ready to copy and post. No brackets to fill in. No "insert your ch
 
 **Input:** "We just had our biggest Easter attendance ever. 847 people showed up."
 
-**Input:** "Philippians 4:13 — I want to post something around this verse for Monday morning motivation."
+**Input:** "Philippians 4:13. I want to post something around this verse for Monday morning motivation."
 
 **Input:** "We're launching a new young adults ministry called 'The Table' on April 27. Sunday morning, 9am."
 

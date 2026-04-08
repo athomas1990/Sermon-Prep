@@ -191,7 +191,7 @@ Preview: [40-90 chars, complements Subject A]
 
 [Item 3, 1-2 sentences, CTA]
 
-[Item 4, 1-2 sentences, CTA — optional]
+[Item 4, 1-2 sentences, CTA (optional)]
 
 This week:
 - [Action item 1] → [link]

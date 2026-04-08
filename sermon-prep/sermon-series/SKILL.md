@@ -16,8 +16,8 @@ Map out your next series so every week builds on the last.
 To build your series, give me:
 
 - **Theme, topic, or book of the Bible** (e.g., "the book of James," "anxiety," "what it means to follow Jesus")
-- **Number of weeks** — or say "suggest a length" and I'll recommend one
-- **Any constraints** — things like "Easter lands on week 4," "end with a giving emphasis," "we have a guest preacher on week 2," or "keep it accessible for seekers"
+- **Number of weeks**, or say "suggest a length" and I'll recommend one
+- **Any constraints**: things like "Easter lands on week 4," "end with a giving emphasis," "we have a guest preacher on week 2," or "keep it accessible for seekers"
 
 If you don't have constraints, just give me the theme and weeks. I'll take it from there.
 
