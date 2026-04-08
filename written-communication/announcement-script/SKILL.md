@@ -92,21 +92,44 @@ Do not include room numbers, committee chair names, or other fine print in the s
 
 ## Output Format
 
+Output is a **branded single-page PDF** designed to be printed and handed to the announcer. The PDF generator lives at `generate-pdf.py` in this skill folder.
+
+### PDF Layout
+
+1. **Header:** "Sunday Announcements" in navy, centered, bold
+2. **Meta line:** date | estimated seconds | items covered out of submitted (centered, gray)
+3. **Gold accent rule**
+4. **Deliverer/tone notes** in italic slate (if provided)
+5. **Script body** in readable serif type. Delivery cues written as `[pause]` in the JSON render as *(pause)* in italic slate color inline.
+6. **Divider** (thin gray rule)
+7. **Bumped items section:** "For the Bulletin / Slides / Email" header with bullet list of items that did not make the spoken cut
+8. **Footer:** thin gray rule with page number only (no REACHRIGHT branding)
+
+### JSON Schema
+
+Save the structured output as JSON matching this schema, then run `python generate-pdf.py input.json` to produce the PDF.
+
+```json
+{
+  "date": "April 20, 2026",
+  "estimated_seconds": 75,
+  "items_submitted": 7,
+  "items_covered": 3,
+  "deliverer": "Worship Pastor",
+  "tone_notes": "High energy, celebratory. Baptism Sunday.",
+  "script_body": "Full script text. Use [cue] for delivery cues. Separate paragraphs with double newlines.",
+  "bumped_items": [
+    {"item": "Youth group schedule change", "summary": "Friday moved to Saturday this week only."}
+  ]
+}
 ```
-## Announcement Script
-**Estimated time:** [X] seconds
-**Items covered:** [X] of [Y] submitted
 
----
+**Field notes:**
 
-[Full word-for-word script with delivery notes in parentheses]
-
----
-
-**For the bulletin/slides/email (didn't make the spoken cut):**
-- [Item]: [one-line summary with key logistics]
-- [Item]: [one-line summary with key logistics]
-```
+- `script_body` -- Use `[brackets]` for delivery cues (e.g., `[pause]`, `[smile]`, `[point to screen]`). They render as italic colored text in the PDF. Separate paragraphs with double newlines (`\n\n`).
+- `bumped_items` -- Announcements that did not make the spoken script. Each has an `item` name and a one-line `summary` with key logistics.
+- `deliverer` and `tone_notes` are optional. If omitted, those lines are skipped in the PDF.
+- The PDF is church-branded (no REACHRIGHT footer).
 
 ---
 
