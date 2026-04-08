@@ -163,3 +163,29 @@ Most church letters are written under pressure, by someone who is not sure what 
 A letter from a pastor carries weight that an email or announcement does not. People save them. They re-read them. They quote them in conversations months later. That weight is not a reason to avoid writing letters. It is a reason to write them carefully.
 
 The goal is not a perfect letter. The goal is a letter your congregation can receive clearly, trust completely, and act on confidently.
+
+---
+
+## Output Format
+
+After writing the letter, output a single JSON block that the PDF generator can consume. This is a church-branded document with no REACHRIGHT branding.
+
+```json
+{
+  "church_name": "CHURCH_NAME from foundation",
+  "date": "April 14, 2026",
+  "topic": "Leadership Transition",
+  "addressee": "Dear New Hope Family,",
+  "body": "Full letter text. Separate paragraphs with double newlines.",
+  "pastor_name": "PASTOR_NAME from foundation",
+  "pastor_title": "PASTOR_TITLE from foundation",
+  "framing_note": "One sentence describing the letter for pastor reference only.",
+  "flags": ["Any flags for legal review or pastoral follow-up."]
+}
+```
+
+**Notes:**
+- `framing_note` and `flags` do not appear in the PDF. They are for pastor reference only.
+- `body` uses `\n\n` to separate paragraphs.
+- No REACHRIGHT branding anywhere in the output. This is a church document.
+- No em dashes. Use commas, periods, or semicolons instead.
