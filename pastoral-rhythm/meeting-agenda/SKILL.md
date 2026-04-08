@@ -204,3 +204,37 @@ Here is a sample agenda for a 60-minute staff meeting with four items:
 Paste or describe your meeting details and I will build a complete, ready-to-run agenda. Include your meeting type, time available, and topics to cover. If you have specific decisions that must land in this meeting, name them. The more specific you are, the more useful the agenda.
 
 If you are not sure what belongs on the agenda, list everything on your mind and I will help you prioritize, cut, and sequence it.
+
+---
+
+## Output Format
+
+After building the agenda, generate a JSON file matching this schema and pass it to `generate-pdf.py` to produce a REACHRIGHT-branded PDF.
+
+```json
+{
+  "meeting_type": "Staff Meeting",
+  "date": "April 14, 2026",
+  "start_time": "9:00 AM",
+  "end_time": "10:00 AM",
+  "total_minutes": 60,
+  "location": "Conference Room B",
+  "pastor_name": "PASTOR_NAME from foundation",
+  "church_name": "CHURCH_NAME from foundation",
+  "time_check": {"allocated": 60, "available": 60},
+  "opening": {"minutes": 5, "prayer_note": "Opening prayer", "checkin_question": "One win from this week?"},
+  "agenda_items": [
+    {"title": "Easter Debrief", "minutes": 15, "purpose": "Discussion", "lead": "Lead Pastor", "context": "47 guests, four salvations.", "discussion_question": "What worked better than expected?", "decision_needed": "No", "decision_detail": ""}
+  ],
+  "action_items": [{"action": "Send budget summary", "owner": "Executive Pastor", "deadline": "Friday"}],
+  "closing": {"minutes": 2, "note": "Closing prayer"},
+  "parking_lot": ["Building project update (deferred to April 21)"]
+}
+```
+
+**Field notes:**
+
+- **purpose** must be one of: "Update", "Discussion", or "Decision"
+- **decision_needed** must be "Yes" or "No"
+- **decision_detail** is only used when decision_needed is "Yes"
+- Do not use em dashes in any field values
