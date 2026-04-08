@@ -41,7 +41,19 @@ I'm sharing them because pastors deserve better than generic AI prompts. These a
 
 ## Getting Started
 
-### Option 1: Claude Code (CLI or Desktop App)
+### Option 1: Claude Code (Easiest)
+
+Open Claude Code and paste this:
+
+> Install the pastor AI skills from https://github.com/tkcostello/pastor-ai-skills. I want all of them.
+
+That's it. Claude will clone the repo, install the foundation and all the skills for you. If you only want specific skills, just tell it which ones you want.
+
+Once installed, use them by typing `/sermon-research`, `/church-email`, etc.
+
+### Option 2: Manual Install (Claude Code CLI)
+
+If you prefer to do it yourself:
 
 ```bash
 # Clone the repo
@@ -56,8 +68,6 @@ cp -r pastor-ai-skills/written-communication/church-email ~/.claude/skills/
 cp -r pastor-ai-skills/sermon-repurposing/small-group-questions ~/.claude/skills/
 # ... add as many as you need
 ```
-
-Then use them by typing `/sermon-research`, `/church-email`, etc. in Claude Code.
 
 ### Option 2: Claude.ai Projects
 
