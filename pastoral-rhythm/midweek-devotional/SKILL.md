@@ -104,7 +104,7 @@ Avoid these. They will kill the devotional.
 
 ## Output
 
-Deliver the devotional as a clean, ready-to-send document.
+Deliver the devotional as a formatted PDF using `generate-pdf.py`.
 
 No headers inside the devotional itself. No labels like "Opening:" or "Reflection:" in the final output. Those are structural guides for writing it, not formatting for the reader.
 
@@ -115,3 +115,38 @@ If the input includes a current sermon series, weave in a single line of connect
 If the input includes a community event or current moment on people's minds, let it inform the opening or reflection. Ground the text in the world the reader is actually living in.
 
 Word count check before finalizing: if it exceeds 300 words, cut from the reflection first, then the closing. The opening and takeaway are the last things to trim.
+
+### PDF Generation
+
+Write the devotional content to a JSON file, then run `generate-pdf.py` to produce the branded PDF.
+
+**JSON schema:**
+
+```json
+{
+  "church_name": "CHURCH_NAME from foundation",
+  "date": "April 16, 2026",
+  "pastor_name": "PASTOR_NAME from foundation",
+  "passage_reference": "Psalm 46:10",
+  "translation": "ESV",
+  "scripture_text": "Be still, and know that I am God.",
+  "opening": "Opening text (1-2 sentences).",
+  "reflection": "Reflection text. Separate paragraphs with double newlines.",
+  "takeaway": "One sentence the reader carries into the rest of the week.",
+  "closing": "Prayer or benediction text."
+}
+```
+
+**Field notes:**
+
+- `church_name` and `pastor_name` come from the pastor-foundation skill.
+- `reflection` uses `\n\n` to separate paragraphs.
+- No section headers appear in the PDF. The layout flows as one continuous piece.
+- The PDF is church-branded (no REACHRIGHT branding). Footer shows only a thin gray rule and page number.
+
+**Usage:**
+
+```bash
+python generate-pdf.py input.json                  # output auto-named from date
+python generate-pdf.py input.json devotional.pdf   # explicit output path
+```
