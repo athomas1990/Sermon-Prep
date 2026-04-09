@@ -9,10 +9,10 @@ _here = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(_here, "..", "..", "shared"))
 
 from pdf_utils import (
-    NAVY, GOLD, BODY_COLOR, MED_GRAY,
+    NAVY, GOLD, BODY_COLOR,
     build_styles, make_page_footer, create_doc,
 )
-from reportlab.platypus import Paragraph, Spacer, HRFlowable
+from reportlab.platypus import Paragraph, HRFlowable
 from reportlab.lib.styles import ParagraphStyle
 from reportlab.lib.enums import TA_CENTER, TA_RIGHT, TA_JUSTIFY
 

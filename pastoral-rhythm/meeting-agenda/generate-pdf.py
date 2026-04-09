@@ -9,13 +9,12 @@ _here = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(_here, "..", "..", "shared"))
 
 from pdf_utils import (
-    SLATE, CONTENT_WIDTH,
+    SLATE, RULE_GRAY,
     build_styles, section_header, add_title_banner,
     add_reachright_footer, make_page_footer, create_doc,
     add_bullet_list, add_shaded_box,
 )
 from reportlab.platypus import Paragraph, Spacer, HRFlowable
-from reportlab.lib.colors import HexColor
 
 
 def add_time_check(story, time_check, styles):
@@ -55,7 +54,7 @@ def add_agenda_item(story, item, styles):
         detail = item.get("decision_detail", "Yes")
         story.append(Paragraph(detail, styles["body_content"]))
 
-    story.append(HRFlowable(width="100%", thickness=0.5, color=HexColor("#D1CDC4"), spaceBefore=8, spaceAfter=12))
+    story.append(HRFlowable(width="100%", thickness=0.5, color=RULE_GRAY, spaceBefore=8, spaceAfter=12))
 
 
 def generate_pdf(json_path, output_path=None):

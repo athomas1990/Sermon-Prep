@@ -12,7 +12,7 @@ from pdf_utils import (
     build_styles, section_header, add_section, add_title_banner,
     add_reachright_footer, make_page_footer, create_doc, add_table,
 )
-from reportlab.platypus import Paragraph, Spacer
+from reportlab.platypus import Paragraph
 
 
 def add_practical_notes(story, notes, styles):

@@ -13,7 +13,7 @@ from pdf_utils import (
     NAVY, GOLD, BODY_COLOR, SLATE, MED_GRAY,
     build_styles, make_page_footer, create_doc, add_bullet_list,
 )
-from reportlab.platypus import Paragraph, Spacer, HRFlowable
+from reportlab.platypus import Paragraph, HRFlowable
 from reportlab.lib.styles import ParagraphStyle
 from reportlab.lib.enums import TA_CENTER
 

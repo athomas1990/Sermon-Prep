@@ -17,7 +17,7 @@ sys.path.insert(0, os.path.join(_here, "..", "..", "shared"))
 
 from pdf_utils import (
     NAVY, GOLD, SLATE, LIGHT_BG, RULE_GRAY, WHITE,
-    CONTENT_WIDTH, build_styles, section_header, add_section, add_title_banner,
+    build_styles, section_header, add_section, add_title_banner,
     add_reachright_footer, make_page_footer, create_doc, add_shaded_box,
 )
 from reportlab.platypus import Paragraph, Spacer, Table, TableStyle

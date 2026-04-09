@@ -168,7 +168,31 @@ The goal is not a perfect letter. The goal is a letter your congregation can rec
 
 ## Output Format
 
-After writing the letter, output a single JSON block that the PDF generator can consume. This is a church-branded document with no REACHRIGHT branding.
+This skill outputs a formatted PDF document with church letterhead, not terminal text. The PDF includes the church name as a centered letterhead, a gold accent line, the dated and addressed letter body in justified type, and a pastor signature block. This is a church-branded document with no REACHRIGHT branding.
+
+### Requirements
+
+The PDF generator requires Python and the `reportlab` library. If reportlab is not installed, install it before generating:
+
+```
+pip install reportlab
+```
+
+### How It Works
+
+After writing the complete letter, do the following:
+
+1. **Write a JSON file** containing the structured letter data. Save it as a temporary file (e.g., `church-letter-temp.json`) in the current working directory.
+2. **Locate `generate-pdf.py`** in the same directory as this skill file. Search skill directories if needed.
+3. **Run the script:** `python generate-pdf.py church-letter-temp.json`
+4. **Delete the temporary JSON file** after the PDF generates successfully.
+5. **Tell the pastor** the PDF filename and where it was saved.
+
+The PDF saves to the current working directory with a filename based on the date and topic (e.g., `Church-Letter-April-14-2026-Leadership-Transition.pdf`).
+
+### JSON Data Structure
+
+Structure the letter into this exact format before generating the PDF.
 
 ```json
 {
@@ -184,8 +208,9 @@ After writing the letter, output a single JSON block that the PDF generator can 
 }
 ```
 
-**Notes:**
-- `framing_note` and `flags` do not appear in the PDF. They are for pastor reference only.
-- `body` uses `\n\n` to separate paragraphs.
-- No REACHRIGHT branding anywhere in the output. This is a church document.
-- No em dashes. Use commas, periods, or semicolons instead.
+**Important notes on the JSON:**
+- `framing_note` and `flags` do not appear in the PDF. They are for the pastor's reference only.
+- `body` is a plain text string. Separate paragraphs with double newlines (`\n\n`).
+- This is a church-branded document. No REACHRIGHT branding appears anywhere in the output.
+- Use the pastor's real name, title, and church name from the foundation variables, not placeholders.
+- Do not use em dashes anywhere in the content. Use commas, colons, or periods instead.
